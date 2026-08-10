@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": "1786350442441",
+      "name": "shivansh",
+      "email": "vermavanshika000@gmail.com",
+      "password": "$2b$10$LEFh/lO3Ta9wKzUvwgawSeEnP2MaEEEDGB81uEZZYIK6KVzvpZkUi",
+      "phone": "6005965982",
+      "emergencyContacts": [],
+      "createdAt": "2026-08-10T08:27:22.441Z"
+    },
+    {
+      "id": "1786351004570",
+      "name": "Vanshika",
+      "email": "vermavannshikaa.7@gmail.com",
+      "password": "$2b$10$V2P89Ty8RApsiXT.2oavkeUVybYwqi2MW5SMAr0jkIaaOAPYzZumO",
+      "phone": "6005965981",
+      "emergencyContacts": [],
+      "createdAt": "2026-08-10T08:36:44.570Z"
+    }
+  ]
+}

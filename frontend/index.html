@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#e11d48" />
+  <title>SafeHer - Women Safety App</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- AUTH SCREEN -->
+  <div id="auth-screen" class="screen active">
+    <div class="auth-container">
+      <div class="logo">
+        <div class="logo-icon">🛡️</div>
+        <h1>SafeHer</h1>
+        <p>Your personal safety companion</p>
+      </div>
+
+      <form id="login-form" class="auth-form">
+        <h2>Welcome Back</h2>
+        <div class="input-group">
+          <input type="email" id="login-email" placeholder="Email" required />
+        </div>
+        <div class="input-group">
+          <input type="password" id="login-password" placeholder="Password" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <p class="switch-auth">Don't have an account? <a href="#" id="show-register">Register</a></p>
+      </form>
+
+      <form id="register-form" class="auth-form hidden">
+        <h2>Create Account</h2>
+        <div class="input-group">
+          <input type="text" id="reg-name" placeholder="Full Name" required />
+        </div>
+        <div class="input-group">
+          <input type="email" id="reg-email" placeholder="Email" required />
+        </div>
+        <div class="input-group">
+          <input type="password" id="reg-password" placeholder="Password (min 6 chars)" required minlength="6" />
+        </div>
+        <div class="input-group">
+          <input type="tel" id="reg-phone" placeholder="Phone Number" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+        <p class="switch-auth">Already have an account? <a href="#" id="show-login">Login</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- MAIN APP -->
+  <div id="app-screen" class="screen">
+    <header class="top-bar">
+      <div class="user-info">
+        <span id="user-name">User</span>
+      </div>
+      <button id="logout-btn" class="icon-btn" title="Logout">Logout</button>
+    </header>
+
+    <main class="main-content">
+      <section class="sos-section">
+        <button id="sos-btn" class="sos-button">
+          <span class="sos-text">SOS</span>
+          <span class="sos-sub">Hold for Emergency</span>
+        </button>
+        <p class="sos-hint">Press & hold for 2 seconds to trigger full emergency</p>
+      </section>
+
+      <section class="quick-actions">
+        <h3>Quick Actions</h3>
+        <div class="action-grid">
+          <button id="fake-call-btn" class="action-card">
+            <span class="action-icon">📞</span>
+            <span>Fake Call</span>
+          </button>
+          <button id="alarm-btn" class="action-card">
+            <span class="action-icon">🚨</span>
+            <span>Alarm</span>
+          </button>
+          <button id="share-location-btn" class="action-card">
+            <span class="action-icon">📍</span>
+            <span>Share Location</span>
+          </button>
+          <button id="contacts-btn" class="action-card">
+            <span class="action-icon">👥</span>
+            <span>Contacts</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="helpline-section">
+        <h3>Emergency Helplines</h3>
+        <div class="helpline-list" id="helpline-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- FAKE CALL MODAL -->
+  <div id="fake-call-modal" class="modal">
+    <div class="fake-call-screen">
+      <div class="caller-info">
+        <div class="caller-avatar">👤</div>
+        <h2 id="caller-name">Mom</h2>
+        <p>Incoming call...</p>
+      </div>
+      <div class="call-actions">
+        <button id="accept-call" class="call-btn accept">✓</button>
+        <button id="reject-call" class="call-btn reject">✕</button>
+      </div>
+      <div class="call-timer hidden" id="call-timer">00:00</div>
+      <button id="end-call-btn" class="btn btn-danger hidden">End Call</button>
+    </div>
+  </div>
+
+  <!-- ALARM MODAL -->
+  <div id="alarm-modal" class="modal">
+    <div class="alarm-screen">
+      <div class="alarm-icon">🚨</div>
+      <h2>EMERGENCY ALARM</h2>
+      <p>Help is on the way. Stay calm.</p>
+      <button id="stop-alarm-btn" class="btn btn-danger">STOP ALARM</button>
+    </div>
+  </div>
+
+  <!-- LOCATION MODAL -->
+  <div id="location-modal" class="modal">
+    <div class="modal-content">
+      <h2>Share Live Location</h2>
+      <div id="location-status">Getting your location...</div>
+      <div id="location-coords" class="coords"></div>
+      <div class="location-actions">
+        <button id="share-whatsapp" class="btn btn-success">Share via WhatsApp</button>
+        <button id="copy-location" class="btn btn-secondary">Copy Link</button>
+        <button id="close-location" class="btn btn-outline">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACTS MODAL -->
+  <div id="contacts-modal" class="modal">
+    <div class="modal-content">
+      <h2>Emergency Contacts</h2>
+      <div id="contacts-list"></div>
+      <form id="add-contact-form" class="add-contact-form">
+        <input type="text" id="contact-name" placeholder="Name" required />
+        <input type="tel" id="contact-phone" placeholder="Phone" required />
+        <button type="submit" class="btn btn-primary">Add Contact</button>
+      </form>
+      <button id="close-contacts" class="btn btn-outline">Close</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/location.js"></script>
+  <script src="js/fakeCall.js"></script>
+  <script src="js/alarm.js"></script>
+</body>
+</html>
